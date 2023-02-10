@@ -6,28 +6,28 @@ import java.util.List;
 import org.apache.spark.api.java.function.FlatMapFunction;
 import uk.ac.gla.dcs.bigdata.providedutilities.TextPreProcessor;
 import uk.ac.gla.dcs.bigdata.studentstructures.Text;
-import uk.ac.gla.dcs.bigdata.studentstructures.Token;
+import uk.ac.gla.dcs.bigdata.studentstructures.Term;
 
 /**
  * @Description Convert a Text to a list of Tokens
  * @Author Chris
  * @Date 2023/2/9
  */
-public class TextToToken implements FlatMapFunction<Text, Token> {
+public class TextToTerm implements FlatMapFunction<Text, Term> {
 
     private transient TextPreProcessor processor;
 
     @Override
-    public Iterator<Token> call(Text text) throws Exception {
+    public Iterator<Term> call(Text text) throws Exception {
         if (processor == null) {
             processor = new TextPreProcessor();
         }
 
-        List<Token> tokens = new ArrayList<>();
+        List<Term> terms = new ArrayList<>();
         for (String token: processor.process(text.getText())){
-            tokens.add(new Token(text.getNewsArticleId(), token));
+            terms.add(new Term(text.getNewsArticleId(), token));
         }
 
-        return tokens.iterator();
+        return terms.iterator();
     }
 }

@@ -8,7 +8,6 @@ import org.apache.spark.api.java.function.FlatMapFunction;
 import uk.ac.gla.dcs.bigdata.providedstructures.ContentItem;
 import uk.ac.gla.dcs.bigdata.providedstructures.NewsArticle;
 import uk.ac.gla.dcs.bigdata.studentstructures.Text;
-import uk.ac.gla.dcs.bigdata.studentstructures.Token;
 
 /**
  * @Description Convert a NewsArticle to a list of Text

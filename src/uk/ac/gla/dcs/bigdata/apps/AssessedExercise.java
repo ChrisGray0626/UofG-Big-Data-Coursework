@@ -9,13 +9,14 @@ import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
+import uk.ac.gla.dcs.bigdata.constant.ColumnNameConstant;
 import uk.ac.gla.dcs.bigdata.providedfunctions.NewsFormaterMap;
 import uk.ac.gla.dcs.bigdata.providedstructures.DocumentRanking;
 import uk.ac.gla.dcs.bigdata.providedstructures.NewsArticle;
 import uk.ac.gla.dcs.bigdata.studentfunctions.NewsArticleToText;
-import uk.ac.gla.dcs.bigdata.studentfunctions.TextToToken;
+import uk.ac.gla.dcs.bigdata.studentfunctions.TextToTerm;
 import uk.ac.gla.dcs.bigdata.studentstructures.Text;
-import uk.ac.gla.dcs.bigdata.studentstructures.Token;
+import uk.ac.gla.dcs.bigdata.studentstructures.Term;
 
 /**
  * This is the main class where your Spark topology should be specified.
@@ -102,9 +103,9 @@ public class AssessedExercise {
 		// Your Spark Topology should be defined here
 		//----------------------------------------------------------------
 		Dataset<Text> texts = news.flatMap(new NewsArticleToText(), Encoders.bean(Text.class));
-		Dataset<Token> tokens = texts.flatMap(new TextToToken(), Encoders.bean(Token.class));
-		tokens.groupBy("newsArticleId", "token").count().show();
-		tokens.groupBy("token").count().show();
+		Dataset<Term> terms = texts.flatMap(new TextToTerm(), Encoders.bean(Term.class));
+		terms.groupBy(ColumnNameConstant.NEWS_ARTICLE_ID, ColumnNameConstant.TERM).count().show();
+		terms.groupBy(ColumnNameConstant.TERM).count().show();
 
 		return null; // replace this with the list of DocumentRanking output by your topology
 	}

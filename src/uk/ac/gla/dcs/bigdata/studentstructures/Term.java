@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Token {
+public class Term {
 
     private String newsArticleId;
-    private String token;
+    private String term;
 
 }
