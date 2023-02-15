@@ -1,6 +1,9 @@
 package uk.ac.gla.dcs.bigdata.providedfunctions;
 
-import org.apache.spark.api.java.function.MapFunction;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.sql.Row;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,20 +15,24 @@ import uk.ac.gla.dcs.bigdata.providedstructures.NewsArticle;
  * @author Richard
  *
  */
-public class NewsFormaterMap implements MapFunction<Row,NewsArticle> {
+public class NewsFormatter implements FlatMapFunction<Row,NewsArticle> {
 
 	private static final long serialVersionUID = -4631167868446468097L;
 
 	private transient ObjectMapper jsonMapper;
 	
 	@Override
-	public NewsArticle call(Row value) throws Exception {
-
-		if (jsonMapper==null) jsonMapper = new ObjectMapper();
-		
+	public Iterator<NewsArticle> call(Row value) throws Exception {
+		if (jsonMapper==null) {
+			jsonMapper = new ObjectMapper();
+		}
 		NewsArticle article = jsonMapper.readValue(value.mkString(), NewsArticle.class);
-		
-		return article;
+		// Remove articles with no title
+		if (null== article.getTitle()) {
+			return Collections.emptyIterator();
+		}
+
+		return List.of(article).iterator();
 	}
 		
 		

@@ -6,15 +6,15 @@ import lombok.NoArgsConstructor;
 import uk.ac.gla.dcs.bigdata.providedstructures.NewsArticle;
 
 /**
- * @Description Text Entity
+ * @Description
  * @Author Xiaohui Yu
- * @Date 2023/2/9
+ * @Date 2023/2/19
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Text {
+public class NewsArticleWithId {
 
+    private String newsArticleId;
     private NewsArticle newsArticle;
-    private String text;
 }

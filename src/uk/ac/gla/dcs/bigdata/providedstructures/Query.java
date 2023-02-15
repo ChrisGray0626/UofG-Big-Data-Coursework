@@ -44,9 +44,13 @@ public class Query implements Serializable{
 		this.queryTermCounts = queryTermCounts;
 	}
 
+	public boolean equals(Query query) {
+		return this.originalQuery.equals(query.getOriginalQuery());
+	}
 	
-	
-	
+	public int hashCode() {
+		return this.originalQuery.hashCode();
+	}
 	
 	
 	

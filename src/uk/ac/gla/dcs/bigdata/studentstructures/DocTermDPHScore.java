@@ -3,18 +3,18 @@ package uk.ac.gla.dcs.bigdata.studentstructures;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uk.ac.gla.dcs.bigdata.providedstructures.NewsArticle;
 
 /**
- * @Description Text Entity
+ * @Description Document term DPH score structure
  * @Author Xiaohui Yu
- * @Date 2023/2/9
+ * @Date 2023/2/15
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Text {
+public class DocTermDPHScore {
 
-    private NewsArticle newsArticle;
-    private String text;
+    private String newsArticleId;
+    private String term;
+    private double score;
 }

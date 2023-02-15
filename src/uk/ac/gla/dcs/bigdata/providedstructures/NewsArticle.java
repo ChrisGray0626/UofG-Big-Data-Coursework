@@ -2,6 +2,7 @@ package uk.ac.gla.dcs.bigdata.providedstructures;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Represents a single news article from the source Washington Post Corpus
@@ -20,7 +21,7 @@ public class NewsArticle implements Serializable {
 	List<ContentItem> contents; // the contents of the article body
 	String type; // type of the article
 	String source; // news provider
-	
+
 	public NewsArticle() {}
 	
 	public NewsArticle(String id, String article_url, String title, String author, long published_date,
@@ -34,6 +35,16 @@ public class NewsArticle implements Serializable {
 		this.contents = contents;
 		this.type = type;
 		this.source = source;
+	}
+
+
+	public boolean equals(NewsArticle other) {
+		return this.id.equals(other.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return this.id.hashCode();
 	}
 
 	public String getId() {
@@ -99,6 +110,4 @@ public class NewsArticle implements Serializable {
 	public void setSource(String source) {
 		this.source = source;
 	}
-	
-	
 }

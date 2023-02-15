@@ -1,20 +1,21 @@
 package uk.ac.gla.dcs.bigdata.studentstructures;
 
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.ac.gla.dcs.bigdata.providedstructures.NewsArticle;
 
 /**
- * @Description Text Entity
- * @Author Xiaohui Yu
- * @Date 2023/2/9
+ * @Description
+ * @Author Chris
+ * @Date 2023/2/20
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Text {
+public class NewsTermTotal implements Serializable {
 
     private NewsArticle newsArticle;
-    private String text;
+    private TermCount termCount;
 }

@@ -16,11 +16,14 @@ public class TextDistanceCalculator {
 	 * between 0 and 1, where higher values indicate the texts are more dissimilar
 	 * @param textSnippet1 - input text 1
 	 * @param textSnippet2 - input text 2
-	 * @return
+	 * @return similarity score
 	 */
 	public static double similarity(String textSnippet1, String textSnippet2) {
-		
+		// textSnippet1 = clean(textSnippet1);
+		// textSnippet2 = clean(textSnippet2);
+
 		LevenshteinDistance ld = new LevenshteinDistance(); // apache.commons.text implementation of LevenshteinDistance
+
 		int editDistance = ld.apply(textSnippet1, textSnippet2); // calculate the edit distance
 		
 		// get the maximum length of the inputs for normalization
@@ -31,5 +34,17 @@ public class TextDistanceCalculator {
 		return (1.0*editDistance)/maxCharLength;
 		
 	}
-	
+
+	/**
+	 * Cleans the text by removing null
+	 * @param text - input text
+	 * @return cleaned text
+	 */
+	private static String clean(String text) {
+		if (text == null) {
+			return "";
+		}
+
+		return text;
+	}
 }
