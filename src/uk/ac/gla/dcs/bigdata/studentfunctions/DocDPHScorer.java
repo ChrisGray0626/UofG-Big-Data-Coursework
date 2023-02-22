@@ -1,7 +1,6 @@
 package uk.ac.gla.dcs.bigdata.studentfunctions;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +44,12 @@ public class DocDPHScorer implements FlatMapFunction<TermCount, QueryDocScore> {
         int DPHSoreCount = 0;
         // Calculate the DPH score by averaging the DPH score of each query term
         for (String queryTerm : queryTerms) {
-            long termNumInDoc = termNumInDocMap.getOrDefault(queryTerm, 0L);
+            // Skip the query term that does not exist in the document
+            // because DPHScore does not allow termNumInDoc = 0
+            if (!termNumInDocMap.containsKey(queryTerm)) {
+                continue;
+            }
+            long termNumInDoc = termNumInDocMap.get(queryTerm);
             long termNumInCorpus = termNumInCorpusMap.get(queryTerm);
             DPHScoreTotal += DPHScorer.getDPHScore((short) termNumInDoc, (int) termNumInCorpus, (int) termTotalInDoc,
                     termAvgTotalInDoc, docTotalInCorpus);

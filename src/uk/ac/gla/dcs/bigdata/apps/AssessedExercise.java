@@ -2,10 +2,8 @@ package uk.ac.gla.dcs.bigdata.apps;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.spark.SparkConf;
@@ -27,8 +25,8 @@ import uk.ac.gla.dcs.bigdata.providedstructures.NewsArticle;
 import uk.ac.gla.dcs.bigdata.providedstructures.Query;
 import uk.ac.gla.dcs.bigdata.studentfunctions.DocDPHScorer;
 import uk.ac.gla.dcs.bigdata.studentfunctions.NewsToTermCountInDoc;
-import uk.ac.gla.dcs.bigdata.studentstructures.QueryDocScore;
 import uk.ac.gla.dcs.bigdata.studentfunctions.QueryDocScoreToDocumentRanking;
+import uk.ac.gla.dcs.bigdata.studentstructures.QueryDocScore;
 import uk.ac.gla.dcs.bigdata.studentstructures.QueryTerm;
 import uk.ac.gla.dcs.bigdata.studentstructures.TermCount;
 
@@ -122,7 +120,7 @@ public class AssessedExercise {
         // Limit the number of news
         // newsJson = newsJson.limit(40000);
         // Repartition the news
-        newsJson = newsJson.repartition(Integer.parseInt(ValueConstant.PARTITION_NUM));
+        // newsJson = newsJson.repartition(Integer.parseInt(ValueConstant.PARTITION_NUM));
         // Perform an initial conversion from Dataset<Row> to Query and NewsArticle Java objects
         Dataset<Query> queries = queryJson.map(new QueryFormatter(),
                 Encoders.bean(Query.class)); // this converts each row into a Query

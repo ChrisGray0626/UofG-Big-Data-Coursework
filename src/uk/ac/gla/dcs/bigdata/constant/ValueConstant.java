@@ -7,7 +7,7 @@ package uk.ac.gla.dcs.bigdata.constant;
  */
 public class ValueConstant {
 
-    public static final String SPARK_MASTER = "local[*]";
+    public static final String SPARK_MASTER = "local[7]";
     public static final String EXECUTOR_CORE_NUM = "3";
     public static final String EXECUTOR_MEMORY = "1g";
     public static final String PARTITION_NUM = "48";
