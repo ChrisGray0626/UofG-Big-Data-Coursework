@@ -9,8 +9,8 @@ import uk.ac.gla.dcs.bigdata.providedstructures.NewsArticle;
 import uk.ac.gla.dcs.bigdata.providedstructures.Query;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Term count structure
+ * @Author Xiaohui Yu
  * @Date 2023/2/20
  */
 @Data

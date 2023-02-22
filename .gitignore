@@ -2,3 +2,4 @@ target
 BigData-AE.iml
 /.idea/
 data/TREC_Washington_Post_collection.v2.jl.fix.json
+/results/

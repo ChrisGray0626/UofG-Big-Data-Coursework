@@ -1,4 +1,4 @@
-package uk.ac.gla.dcs.bigdata;
+package uk.ac.gla.dcs.bigdata.accumulator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,8 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.apache.spark.util.AccumulatorV2;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Term num map in corpus accumulator
+ * @Author Xiaohui Yu
  * @Date 2023/2/21
  */
 public class TermNumMapAccumulator extends AccumulatorV2<String, Map<String, Long>> {

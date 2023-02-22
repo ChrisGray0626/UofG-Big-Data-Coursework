@@ -35,7 +35,7 @@ public class TextPreProcessor implements Serializable {
 	/**
 	 * Returns an array of processed terms for an input text string
 	 * @param text
-	 * @return
+	 * @return tokens
 	 */
 	public List<String> process(String text) {
 		String[] inputTokens = tokeniser.getTokens(text);

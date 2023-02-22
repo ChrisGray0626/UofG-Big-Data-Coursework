@@ -46,7 +46,7 @@ public class DocumentRanking implements Serializable{
 			builder.append("  ");
 			builder.append(counter);
 			builder.append(":");
-			builder.append(result.getDocid());
+			builder.append(result.getDocId());
 			builder.append(" ");
 			builder.append(result.getScore());
 			builder.append(" ");
@@ -64,8 +64,6 @@ public class DocumentRanking implements Serializable{
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outDirectory+"/"+query.getOriginalQuery().replace(" ", "_"))));
 			writer.write(this.toString());
 			writer.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

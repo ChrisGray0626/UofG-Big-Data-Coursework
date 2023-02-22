@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import uk.ac.gla.dcs.bigdata.providedstructures.NewsArticle;
 
 /**
- * @Description
- * @Author Chris
+ * @Description TermCount of a news structure
+ * @Author Xiaohui Yu
  * @Date 2023/2/20
  */
 @Data

@@ -6,7 +6,7 @@ import org.apache.spark.sql.Row;
 import uk.ac.gla.dcs.bigdata.providedstructures.Query;
 import uk.ac.gla.dcs.bigdata.providedutilities.TextPreProcessor;
 
-public class QueryFormaterMap implements MapFunction<Row, Query> {
+public class QueryFormatter implements MapFunction<Row, Query> {
 
     private static final long serialVersionUID = 6475166483071609772L;
 

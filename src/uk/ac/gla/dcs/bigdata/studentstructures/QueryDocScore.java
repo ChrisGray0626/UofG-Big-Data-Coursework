@@ -14,8 +14,8 @@ import uk.ac.gla.dcs.bigdata.providedstructures.NewsArticle;
 import uk.ac.gla.dcs.bigdata.providedstructures.Query;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Query-documents score structure
+ * @Author Xiaohui Yu
  * @Date 2023/2/20
  */
 @Data
@@ -23,22 +23,9 @@ import uk.ac.gla.dcs.bigdata.providedstructures.Query;
 @NoArgsConstructor
 public class QueryDocScore implements Comparable<QueryDocScore>, Serializable {
 
-    // TODO Remove
-    private Map<Query, List<DocScore>> results;
     private Query query;
     private NewsArticle newsArticle;
     private double DPHScore;
-
-    public QueryDocScore(Query query, NewsArticle newsArticle,
-                         double DPHScore) {
-        // results = new ConcurrentHashMap<>();
-        // results.put(query, new ArrayList<>(){{
-        //     add(new DocScore(newsArticle, DPHScore));
-        // }});
-        this.query = query;
-        this.newsArticle = newsArticle;
-        this.DPHScore = DPHScore;
-    }
 
     @Override
     public int compareTo(@NotNull QueryDocScore o) {

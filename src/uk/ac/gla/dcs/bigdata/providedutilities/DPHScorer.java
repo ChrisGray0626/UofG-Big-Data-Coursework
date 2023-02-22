@@ -21,7 +21,7 @@ public class DPHScorer {
      * @param currentDocumentLength          // the length of the current document (number of terms in the document)
      * @param averageDocumentLengthInCorpus  // the average length across all documents
      * @param totalDocsInCorpus              // the number of documents in the corpus
-     * @return
+     * @return DPH score
      */
     public static double getDPHScore(short termFrequencyInCurrentDocument, int totalTermFrequencyInCorpus,
                                      int currentDocumentLength, double averageDocumentLengthInCorpus,
