@@ -15,6 +15,6 @@ public class ValueConstant {
     public static final int RANKING_SIZE = 10;
     public static final String SAMPLE_NEWS_FILE_PATH = "data/TREC_Washington_Post_collection.v3.example.json";
     public static final String FIX_NEWS_FILE_PATH = "data/TREC_Washington_Post_collection.v2.jl.fix.json";
-    public static final String NEWS_FILE_PATH = SAMPLE_NEWS_FILE_PATH;
+    public static final String NEWS_FILE_PATH = FIX_NEWS_FILE_PATH;
 
 }

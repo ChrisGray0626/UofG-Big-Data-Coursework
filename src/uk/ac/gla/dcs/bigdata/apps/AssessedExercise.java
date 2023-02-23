@@ -42,14 +42,6 @@ import uk.ac.gla.dcs.bigdata.studentstructures.TermCount;
 @Slf4j
 public class AssessedExercise {
 
-    // private static final String SAMPLE_NEWS_FILE_PATH = "data/TREC_Washington_Post_collection.v3.example.json";
-    // private static final String FIX_NEWS_FILE_PATH = "data/TREC_Washington_Post_collection.v2.jl.fix.json";
-    // private static final String NEWS_FILE_PATH = SAMPLE_NEWS_FILE_PATH;
-    // private static final String EXECUTOR_CORE_NUM = "3";
-    // private static final String EXECUTOR_MEMORY = "1g";
-    // private static final String PARTITION_NUM = "48";
-
-
     public static void main(String[] args) {
 
         File hadoopDIR = new File(
