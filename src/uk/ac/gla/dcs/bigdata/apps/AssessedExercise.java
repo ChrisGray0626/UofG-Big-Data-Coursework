@@ -137,6 +137,7 @@ public class AssessedExercise {
                 Encoders.bean(NewsArticle.class)); // this converts each row into a NewsArticle
         // Calculate term count in document
         Dataset<TermCount> termCountInDoc = news.flatMap(new NewsToTermCountInDoc(queryTermMapBroadcast, termNumMapInCorpusAccumulator, docTotalInCorpusAccumulator, termTotalInCorpusAccumulator), Encoders.bean(TermCount.class));
+        // Active the above transformation due to accumulator feature
         log.info("termCountInDoc count: " + termCountInDoc.cache().count());
         // Broadcast term count in corpus from accumulator
         long docTotalInCorpus = docTotalInCorpusAccumulator.value();
