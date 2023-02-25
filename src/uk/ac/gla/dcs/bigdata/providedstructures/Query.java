@@ -11,7 +11,7 @@ public class Query implements Serializable{
 	List<String> queryTerms; // Query terms after tokenization, stopword removal and stemming
 	short[] queryTermCounts; // The number of times each term appears in the query
 	
-	public Query() {}
+	public Query() {}	
 
 	public Query(String originalQuery, List<String> queryTerms, short[] queryTermCounts) {
 		super();

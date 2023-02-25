@@ -41,21 +41,19 @@ public class DocDPHScorer implements FlatMapFunction<TermCount, QueryDocScore> {
         Query query = termCountInDoc.getQuery();
         List<String> queryTerms = query.getQueryTerms();
         double DPHScoreTotal = 0;
-        int DPHSoreCount = 0;
+        int DPHScoreCount = 0;
         // Calculate the DPH score by averaging the DPH score of each query term
         for (String queryTerm : queryTerms) {
-            // Skip the query term that does not exist in the document
-            // because DPHScore does not allow termNumInDoc = 0
-            if (!termNumInDocMap.containsKey(queryTerm)) {
-                continue;
+            // Calculate when the document includes this query term, because of log function, otherwise the score = 0
+            if (termNumInDocMap.containsKey(queryTerm)) {
+                long termNumInDoc = termNumInDocMap.get(queryTerm);
+                long termNumInCorpus = termNumInCorpusMap.get(queryTerm);
+                DPHScoreTotal += DPHScorer.getDPHScore((short) termNumInDoc, (int) termNumInCorpus, (int) termTotalInDoc,
+                        termAvgTotalInDoc, docTotalInCorpus);
             }
-            long termNumInDoc = termNumInDocMap.get(queryTerm);
-            long termNumInCorpus = termNumInCorpusMap.get(queryTerm);
-            DPHScoreTotal += DPHScorer.getDPHScore((short) termNumInDoc, (int) termNumInCorpus, (int) termTotalInDoc,
-                    termAvgTotalInDoc, docTotalInCorpus);
-            DPHSoreCount++;
+            DPHScoreCount++;
         }
-        double DPHScore = DPHScoreTotal / DPHSoreCount;
+        double DPHScore = DPHScoreTotal / DPHScoreCount;
 
         queryDocScores.add(new QueryDocScore(query, termCountInDoc.getNewsArticle(), DPHScore));
 
